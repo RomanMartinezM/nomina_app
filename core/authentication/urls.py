@@ -6,8 +6,7 @@ urlpatterns = [
     
     path('auth/users/test/', mensaje),
     path('auth/users/login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('auth/users/logout/', LogoutView.as_view(), name="auth_logout")
-
+    path('auth/users/logout/', LogoutView.as_view(), name="auth_logout"),
 ]
 
 #anterior path
