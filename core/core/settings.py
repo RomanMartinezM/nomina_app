@@ -43,8 +43,12 @@ INSTALLED_APPS = [
     'payroll',
     #django external apps
     'rest_framework',
+<<<<<<< HEAD
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
+=======
+    'rest_framework.authtoken'
+>>>>>>> main
 ]
 
 REST_FRAMEWORK = {
@@ -94,6 +98,24 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ]
+}
+
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.ionos.mx'#'smtp.gmail.com'
+EMAIL_HOST_USER = 'roman.martinez@syncronik.team' #your email-id
+EMAIL_HOST_PASSWORD = '9PhaZ852kUG.cQw' #your password
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
 
 ROOT_URLCONF = 'core.urls'
 
