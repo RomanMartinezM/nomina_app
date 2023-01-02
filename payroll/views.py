@@ -113,7 +113,7 @@ def get_payrolls(request):
     return Response({"error":"Token no encontrado"}, status=400)   
              
 
-@api_view(['POST'])
+@api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 def download_payroll(request):
     file_name = request.data.get('payroll_filename', None)
@@ -129,7 +129,7 @@ def download_payroll(request):
     return Response({"msg": "Archivo no encontrado"}, status=400)
     
 
-@api_view(['POST'])
+@api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 def detail_payroll(request):
     file_name = request.data.get('payroll_filename', None)
