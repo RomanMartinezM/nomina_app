@@ -51,37 +51,32 @@ def payrolls_register(request):
 def payrolls_register_on_render(request):
     year = request.data.get('year', None)
     s = StaticFilesStorage()
-
-
     # files = list(get_files(s, location='pdf_files/2021'))
     files = list(get_files(s, location=str('pdf_files/'+year)))
     for file in files:
-    
         pdf_filename = file.split('/')[2] # pdf_files/2021/NOM1221_2021-07-23.pdf
-
-        return Response({"pdf_file": pdf_filename})
-
+        # return Response({"pdf_file": pdf_filename})
         pdf_dataname = pdf_filename.split('_')
         employee_data = pdf_dataname[0]
         code_employee = employee_data.split('NOM')[1]
         data_pdf = pdf_dataname[1]
         date_pdf = data_pdf.split('.pdf')[0]
             
-    #     user = CustomUser.objects.get(code_employee=code_employee)
-    #     Payroll.objects.create(
-    #         user = user,
-    #         payment_date = date_pdf,
-    #         payroll_filename = pdf_filename
-    #     )
+        user = CustomUser.objects.get(code_employee=code_employee)
+        Payroll.objects.create(
+            user = user,
+            payment_date = date_pdf,
+            payroll_filename = pdf_filename
+        )
 
-    # return Response({
-    #     # "code_employee": code_employee,
-    #     # "user": serializer.data,
-    #     # "user_id": user.id,
-    #     # "date": date_pdf,
-    #     # "pdf_filename": pdf_filename
-    #     "msg": "Registros realizados"
-    # })
+    return Response({
+        # "code_employee": code_employee,
+        # "user": serializer.data,
+        # "user_id": user.id,
+        # "date": date_pdf,
+        # "pdf_filename": pdf_filename
+        "msg": "Registros realizados"
+    })
 
 
 @api_view(['GET'])
