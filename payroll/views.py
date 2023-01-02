@@ -114,7 +114,7 @@ def get_payrolls(request):
              
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def download_payroll(request):
     file_name = request.data.get('payroll_filename', None)
     # date_pdf = file_name.split('_')[1].split('.pdf')[0]
@@ -130,7 +130,7 @@ def download_payroll(request):
     
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def detail_payroll(request):
     file_name = request.data.get('payroll_filename', None)
     # date_pdf = file_name.split('_')[1].split('.pdf')[0]
