@@ -5,7 +5,7 @@ class PayrollSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField('get_user')
     class Meta:
         model = Payroll
-        fields = ('id', 'user', 'payment_date', 'payroll_filename')
+        fields = ('id', 'user', 'payment_date', 'payroll_filename', 'file_link')
 
     def get_user(self, Payroll):
         return {
