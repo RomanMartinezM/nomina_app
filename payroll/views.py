@@ -532,7 +532,9 @@ def get_payrolls(request):
 def download_payroll(request):
     file_name = request.data.get('payroll_filename', None)
     payroll = Payroll.objects.filter(payroll_filename=file_name)
-    return Response({"file_link": payroll.file_link})
+    serializer = PayrollSerializer(payroll, many=False)
+    return Response({"file_link": serializer.data.file_link})
+    # return Response({"file_link": payroll.file_link})
 
     # date_pdf = file_name.split('_')[1].split('.pdf')[0]
     # year_folder = date_pdf.split('-')[0]
@@ -551,7 +553,8 @@ def download_payroll(request):
 def detail_payroll(request):
     file_name = request.data.get('payroll_filename', None)
     payroll = Payroll.objects.filter(payroll_filename=file_name)
-    return Response({"file_link": payroll.file_link})
+    serializer = PayrollSerializer(payroll, many=False)
+    return Response({"file_link": serializer.data.file_link})
     # date_pdf = file_name.split('_')[1].split('.pdf')[0]
     # year_folder = date_pdf.split('-')[0]
     
