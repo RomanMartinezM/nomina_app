@@ -7,7 +7,7 @@ urlpatterns = [
     path('payroll-register-render/', payrolls_register_on_render),
     path('get-payrolls/', get_payrolls),
     # path('download_payroll/', download_payroll, name='download_payroll'),
-    path('download_payroll/<str:payroll_file_name>/', download_payroll, name='download_payroll'),
+    path('download_payroll/<int:year_folder>/<str:payroll_file_name>/', download_payroll, name='download_payroll'),
     # path('detail_payroll/', detail_payroll, name='detail_payroll'),
-    path('detail_payroll/<str:payroll_file_name>/', detail_payroll, name='detail_pdf'),
+    path('detail_payroll/<int:year_folder>/<str:payroll_file_name>/', detail_payroll, name='detail_pdf'),
 ] 

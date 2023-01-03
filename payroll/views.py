@@ -1260,13 +1260,13 @@ def get_payrolls(request):
 
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
-def download_payroll(request, payroll_file_name):
+def download_payroll(request, year_folder, payroll_file_name):
     # payroll_file_name = request.data.get('payroll_filename', None)
     # payroll = Payroll.objects.filter(payroll_filename=payroll_file_name).first()
     # return Response({"file_link": payroll.file_link})
 
     ######
-    file_path = os.path.join(settings.STATIC_ROOT, 'pdf_files/2022', payroll_file_name)
+    file_path = os.path.join(settings.STATIC_ROOT, 'pdf_files', str(year_folder), payroll_file_name)
     with open(file_path, 'rb') as f:
             file_content = f.read()
     # file_content = payroll.file_link
@@ -1292,14 +1292,14 @@ def download_payroll(request, payroll_file_name):
 
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
-def detail_payroll(request, payroll_file_name):
+def detail_payroll(request, year_folder, payroll_file_name):
     # payroll_file_name = request.data.get('payroll_filename', None)
     # payroll = Payroll.objects.filter(payroll_filename=payroll_file_name).first()
     # return Response({"file_link": payroll.file_link})
 
     # payroll = Payroll.objects.filter(payroll_filename=payroll_file_name).first()
     # file_path = payroll.file_link
-    file_path = os.path.join(settings.STATIC_ROOT, 'pdf_files/2022', payroll_file_name)
+    file_path = os.path.join(settings.STATIC_ROOT, 'pdf_files', str(year_folder), payroll_file_name)
     with open(file_path, 'rb') as f:
             file_content = f.read()
     # file_content = payroll.file_link
